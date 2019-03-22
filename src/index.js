@@ -36,7 +36,7 @@ app.get("/", async (req, res) => {
     } catch (error) {
         if (error.name == "NoSuchElementError") {
             try {
-                driver.wait(until.titleIs("DETRAN - MG - Acompanhar Entrega de CNH"), 2000);
+                driver.wait(driver.findElement(By.xpath(`//*[@class="sem_coluna"]//p[2]`)), 2000);
                 const code = await driver.findElement(By.xpath(`//*[@class="sem_coluna"]//p[2]`)).getText()
                 driver.quit()
                 res.send(code.split(" ")[2])
