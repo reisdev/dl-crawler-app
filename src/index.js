@@ -42,6 +42,8 @@ app.get("/", async (req, res) => {
                 res.send(code.split(" ")[2])
             } catch (error) {
                 res.send(error)
+            } finally {
+                driver.quit()
             }
         }
     } finally {
