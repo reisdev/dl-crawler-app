@@ -4,10 +4,15 @@ const By = require("selenium-webdriver").By
 const until = require("selenium-webdriver").until
 const {Builder} = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
+
+const init = () => {
   driver = await new Builder()
     .forBrowser('chrome')
     .setChromeOptions(new chrome.Options().setChromeBinaryPath('/app/.apt/usr/bin/google-chrome-stable'))
     .build();
+}
+
+init()
 
 const app = express()
 
