@@ -39,6 +39,7 @@ app.get("/", async (req, res) => {
             try {
                 driver.wait(until.titleIs("DETRAN - MG - Acompanhar Entrega de CNH"), 2000);
                 const code = await driver.findElement(By.xpath(`//*[@class="sem_coluna"]//p[2]`)).getText()
+                driver.quit()
                 res.send(code.split(" ")[2])
             } catch (error) {
                 res.send(error)
