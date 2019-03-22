@@ -39,7 +39,7 @@ app.get("/", async (req, res) => {
                 driver.wait(driver.findElement(By.xpath(`//*[@class="sem_coluna"]//p[2]`)), 2000);
                 const code = await driver.findElement(By.xpath(`//*[@class="sem_coluna"]//p[2]`)).getText()
                 driver.quit()
-                res.send(code.split(" ")[2])
+                res.status(200).send({ message: "CNH Encontrada", code: code.split(" ")[2]})
             } catch (error) {
                 res.send(error)
             } finally {
