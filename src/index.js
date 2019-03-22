@@ -8,10 +8,10 @@ const chrome = require('selenium-webdriver/chrome');
 var driver
 
 const init = async () => {
-  driver = await new Builder()
+  return driver = await new Builder()
     .forBrowser('chrome')
     .setChromeOptions(new chrome.Options().setChromeBinaryPath('/app/.apt/usr/bin/google-chrome-stable'))
-    .build();
+    .build()
 }
 
 const app = express()
@@ -19,13 +19,12 @@ const app = express()
 app.get("/", async (req, res) => {
     const CPF = req.query.cpf
     const birthday = req.query.birthday
-
     if(!CPF || !birthday){
         res.status(403).send({ message: "Por favor, forneça o CPF e a data de nascimento"})
         return
     }
     try {
-        init()
+        let driver = await init()
         await driver.get("https://www.detran.mg.gov.br/habilitacao/cnh-e-permissao-para-dirigir/acompanhar-entrega-cnh")
         driver.wait(until.titleIs("DETRAN - MG - Acompanhar Entrega de CNH"), 2000);
         await driver.findElement(By.xpath(`//*[@class="cpf"]`)).sendKeys(CPF)
@@ -47,8 +46,6 @@ app.get("/", async (req, res) => {
                 driver.quit()
             }
         }
-    } finally {
-        driver.quit()
     }
 })
 
