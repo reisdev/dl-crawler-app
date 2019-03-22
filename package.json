@@ -1,0 +1,39 @@
+{
+  "name": "cnh",
+  "version": "0.0.1",
+  "description": "Web Crawler to collect the status of brazilian driver license",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "nodemon ./src/index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mthrsj/dl-crawler.git"
+  },
+  "keywords": [
+    "cnh",
+    "brazil"
+  ],
+  "author": "Matheus Reis <matheusdrdj@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mthrsj/dl-crawler/issues"
+  },
+  "homepage": "https://github.com/mthrsj/dl-crawler#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "geckodriver": "^1.16.0",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "babel-loader": "^8.0.5",
+    "nodemon": "^1.18.10",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  }
+}
