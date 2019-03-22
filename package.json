@@ -5,7 +5,9 @@
   "main": "./src/index.js",
   "scripts": {
     "start": "nodemon ./src/index.js",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "git push heroku master",
+    "postinstall": "apt-get install google-chrome-stable"
   },
   "repository": {
     "type": "git",
