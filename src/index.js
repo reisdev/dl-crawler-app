@@ -1,8 +1,13 @@
 const path = require("path")
 const express = require("express")
-const Builder = require("selenium-webdriver").Builder
 const By = require("selenium-webdriver").By
 const until = require("selenium-webdriver").until
+const {Builder} = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
+  driver = await new Builder()
+    .forBrowser('chrome')
+    .setChromeOptions(new chrome.Options().setChromeBinaryPath('/app/.apt/usr/bin/google-chrome-stable'))
+    .build();
 
 const app = express()
 
@@ -14,7 +19,6 @@ app.get("/", async (req, res) => {
         res.status(403).send({ message: "Por favor, forneça o CPF e a data de nascimento"})
         return
     }
-    let driver = new Builder().forBrowser("chrome").build()
     try {
         await driver.get("https://www.detran.mg.gov.br/habilitacao/cnh-e-permissao-para-dirigir/acompanhar-entrega-cnh")
         driver.wait(until.titleIs("DETRAN - MG - Acompanhar Entrega de CNH"), 2000);
